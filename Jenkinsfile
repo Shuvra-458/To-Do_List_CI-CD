@@ -43,11 +43,10 @@ pipeline {
                 branch 'main'
             }
             steps {
-                script {
-                    docker.withRegistry('', 'docker-hub-cred'){
-                        sh "docker tag ${DOCKER_IMAGE} shuvra458/todo-app:latest"
-                        sh "docker push shuvra458/todo-app:latest"
-                    }
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
+                    sh "docker tag ${DOCKER_IMAGE} shuvra458/todo-app:latest"
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                    sh "docker push shuvra458/todo-app:latest"
                 }
             }
         }
