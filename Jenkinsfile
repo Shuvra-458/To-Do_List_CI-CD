@@ -43,8 +43,12 @@ pipeline {
                 branch 'main'
             }
             steps {
-                sh "docker tag ${DOCKER_IMAGE} shuvra458/todo-app:latest"
-                sh "docker push shuvra458/todo-app:latest"
+                script {
+                    docker.withRegistry('', 'shuvra458'){
+                        sh "docker tag ${DOCKER_IMAGE} shuvra458/todo-app:latest"
+                        sh "docker push shuvra458/todo-app:latest"
+                    }
+                }
             }
         }
     }
