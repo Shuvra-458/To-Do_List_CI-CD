@@ -43,7 +43,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
+                withCredentials([usernamePassword(credentialsId: 'docker-cred-2', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
                     sh "docker tag ${DOCKER_IMAGE} shuvra458/todo-app:latest"
                     sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
                     sh "docker push shuvra458/todo-app:latest"
