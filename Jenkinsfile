@@ -44,7 +44,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('', 'shuvra458'){
+                    docker.withRegistry('', 'docker-hub-cred'){
                         sh "docker tag ${DOCKER_IMAGE} shuvra458/todo-app:latest"
                         sh "docker push shuvra458/todo-app:latest"
                     }
