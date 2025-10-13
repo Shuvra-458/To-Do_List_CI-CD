@@ -39,9 +39,6 @@ pipeline {
         }
 
         stage('Push Docker') {
-            when {
-                branch 'main'
-            }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-cred-2', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
                     sh "docker tag ${DOCKER_IMAGE} shuvra458/todo-app:latest"
