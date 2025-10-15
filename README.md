@@ -43,8 +43,8 @@ todo_app/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/todo-app.git
-cd todo-app
+git clone https://github.com/Shuvra-458/To-Do_List_CI-CD.git
+cd To-Do_List_CI-CD
 ```
 
 ### 2. Create a Python virtual environment
